@@ -1,0 +1,21 @@
+<section class="all-writers">
+    <h2 id="writers-list-heading" 
+    style="text-decoration: underline;">Writers List:</h2>
+
+    <ul class="writers-list">
+        
+
+        <% writers.forEach(writer => { %>
+         
+            <li>
+                <a href="/writers/<%= writer._id %>">
+                    <span><%= writer.name  %></span>
+                    <span class="wr-bio"><%= writer.bio %></span>
+                </a>
+            </li>
+
+        <% }) %>
+
+
+    </ul>
+</section>

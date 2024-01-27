@@ -1,0 +1,24 @@
+<div class="content">
+    <h1 class="index-text"> Hello & Welcome.</h1>
+    <h1 class="index-text"> Who are you searching? </h1>
+
+    <form action="/search" role="search" method="POST" class="index-form" id="index-form">
+        <div class="author-search">
+            <label>Enter writer's name:</label>
+
+            <input
+            type="search"
+            name="authorName"
+            id="authorInput"
+            placeholder="for ex: (J.K.Rowling, S.King)">
+
+            <div class="lower-part-author-search">
+                <button type="submit">Search</button>
+            
+                <small>Error message</small>
+            </div>
+        </div>
+    </form>
+
+    <script src="/js/client-side-author-validation.js"></script>
+</div>

@@ -1,0 +1,8 @@
+<h1 style="text-decoration: underline; text-underline-offset: 15px;"><%= writer.name %></h1>
+<article class="article">
+    <%= writer.bio %>
+</article>
+
+<% books.forEach(book => { %>
+    <%= book.name %>
+<% }) %>

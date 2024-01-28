@@ -23,8 +23,13 @@ router.get('/about', async (req, res) => {
         title: "About",
         description: "Page about us."
     }
+    
+    let data = {
+        header: req.t('about-header'),
+        body: req.t('about-body')
+    }
 
-    res.render('about', { details });
+    res.render('about', { details, data});
 });
 
 /**

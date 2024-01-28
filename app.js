@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
+const { i18next, middleware } = require('./public/js/i18n');
 
 const connectDB = require('./server/config/db');
 
@@ -10,6 +11,7 @@ const PORT = 3000 || process.env.PORT;
 
 connectDB();
 
+app.use(middleware.handle(i18next));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

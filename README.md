@@ -1,4 +1,6 @@
-So, basically this project is Wikipedia-like.
-What's the idea:
- It is a website with database of different authors and literature they have written. You can search, if you are logged in you are able to add them to your favorites. In case you are admin, you can delete, update and create writers.
+So, this project is Wikipedia-like.
+
+**What's the idea:**
+
+It is a website with a database of different authors and literature they have written. You can search, and if you are logged in you can add them to your favorites. You can delete, update, and create writers if you are an admin.
  

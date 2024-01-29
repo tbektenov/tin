@@ -1,0 +1,29 @@
+<div class="author">
+    <h1 class="author-header" style="text-decoration: underline;">Search Results</h1>
+</div>
+
+<section class="found-writers">
+
+    <ul class="writers-list">
+        
+
+        <% if (result.length) { %>
+
+            <% result.forEach(writer => { %>
+                <li>
+                    <a href="/writers/<%= writer._id %>">
+                        <span><%= writer.name  %></span>
+                        <span class="wr-bio"><%= writer.bio %></span>
+                    </a>
+                </li>
+            <% }) %>
+
+        <% } else { %>
+
+            <h3 class="sad-result" style="font-weight: normal;">Unfortunately, nothing was found :c</h3>
+        
+        <% } %>
+
+    </ul>
+
+</section>

@@ -12,6 +12,7 @@
   "author": "Tagir Bektenov s26218",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.0",

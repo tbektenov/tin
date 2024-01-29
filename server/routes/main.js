@@ -93,11 +93,7 @@ router.post('/search', async (req, res) => {
             ]
         }).sort({ name: 1 });
 
-        if (!result.length) {
-            res.render('search-failure', { details });
-        } else {
-            res.render('search-success', { details, result });
-        }
+        res.render('search-result', { details, result });
     } catch (error) {
         console.log(error);
     }

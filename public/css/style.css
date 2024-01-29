@@ -159,20 +159,20 @@ h3 { font-size: var(--font-size-md); }
 }
 
 /* Author search */
-.author-search {
+.index-form {
     margin: 4rem;
     text-align: left;
     font-size: medium;
 }
 
-.author-search label {
+.index-form label {
     font-size: 25px;
     display: inline-block;
     position: relative;
     margin-bottom: 10px;
 }
 
-.author-search input {
+.index-form input {
     padding: 8px;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -181,12 +181,12 @@ h3 { font-size: var(--font-size-md); }
     margin-bottom: 10px;
 }
 
-.form-control input:focus {
+.index-form input:focus {
 	outline: 0;
 	border-color: #a7a7a7;
 }
 
-.author-search button {
+.index-form button {
     font-weight: 600;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -197,7 +197,7 @@ h3 { font-size: var(--font-size-md); }
     width: 120px
 }
 
-.author-search button:hover {
+.index-form button:hover {
     background-color: rgb(75, 189, 75);
     border: solid rgb(61, 180, 61);
 }
@@ -234,4 +234,22 @@ h3 { font-size: var(--font-size-md); }
     text-align: center;
     bottom: 0;
     margin-bottom: 4rem;
+}
+
+/* Register */
+.form-control small {
+    visibility: hidden;
+}
+
+.form-control.success input {
+	border-color: #2ecc71;
+}
+
+.form-control.error input {
+	border-color: #e74c3c;
+}
+
+.form-control.error small {
+    color: #e74c3c;
+    visibility: visible;
 }

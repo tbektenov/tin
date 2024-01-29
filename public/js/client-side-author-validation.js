@@ -7,7 +7,6 @@ form.addEventListener('submit', (e) => {
     try {
         const validatedValue = validateData();
 
-        // Submit the form
         form.submit();
 
     } catch (error) {

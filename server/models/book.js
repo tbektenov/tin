@@ -7,6 +7,10 @@ const bookSchema = new Schema({
     },
     author: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Author'
+    },
+    numOFCopies: {
+        type: Number,
+        default: 0
     }
 });
 

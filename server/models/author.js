@@ -11,6 +11,13 @@ const authorSchema = new Schema({
     },
     books: [
         {type: mongoose.Schema.Types.ObjectId, ref: 'Book'}
+    ],
+    netWorth: {
+        type: Number,
+        default: 0
+    },
+    userFavorites: [
+        {type: mongoose.Schema.Types.ObjectId, ref: 'UserAuthor'}
     ]
 });
 

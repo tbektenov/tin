@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Author = require('../models/author');
 const Book = require('../models/book');
+const User = require('../models/user');
 
 /**
  * HOME
@@ -62,9 +63,10 @@ router.get('/writers/:id', async (req, res) => {
     try {
         let slug = req.params.id;
 
-        const writer = await Author.findById({ _id: slug });
-        const books = await Book.find({ author: slug });
-        res.render('writer', { details, writer, books });
+        const writer = await Author.findById({ _id: slug })
+                                .populate('books');
+
+        res.render('writer', { details, writer });
     } catch (error) {
         console.log(error);
     }
@@ -121,6 +123,19 @@ router.post('/search', async (req, res) => {
 //         {"name":"Harry Potter and the Philosopher's Stone"}
 //     ];
 // }
+//
+// function to update old data
+// async function updateOldRecords() {
+//     try {
+//         await Book.updateMany({}, {$set: { nunOfCopies: 100000 }});
+//         await Author.updateMany({}, { $set: { netWorth: 200000 } });
+//         console.log('Records updated successfully.');
+//     } catch (error) {
+//         console.error('Error updating records:', error);
+//     }
+// }
+//
+// updateOldRecords();
 
 
 module.exports = router;

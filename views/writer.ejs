@@ -1,8 +1,9 @@
 <h1 style="text-decoration: underline; text-underline-offset: 15px;"><%= writer.name %></h1>
+<h3 style="font-weight: normal; font-size: 18px;">Net worth: <%= writer.netWorth %>$</h3>
 <article class="article">
     <%= writer.bio %>
 </article>
 
-<% books.forEach(book => { %>
+<% writer.books.forEach(book => { %>
     <%= book.name %>
 <% }) %>

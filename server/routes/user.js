@@ -25,6 +25,16 @@ router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
 
+        if (!username || !password) {
+            return res.status(400).json({ error: 'All fields are required.' });
+        }
+
+        let existingUser = await User.findOne({ username });
+
+        if (!existingUser) {
+            return res.status(400).json({ error: 'No such username' });
+        }
+
         
     } catch (error) {
         console.log(error);

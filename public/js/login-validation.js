@@ -6,6 +6,29 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const validatedData = validateData();
+
+    if(validatedData) {
+        try {
+            let res = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(validatedData),
+            });
+
+            if(!res.ok) {
+                let resData = await res.json();
+                let errorMessage = resData.error;
+
+                if(errorMessage.includes('No such username')) {
+                    setErrorFor(username, errorMessage);
+                }
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 });
 
 function validateData() {
@@ -29,7 +52,7 @@ function validateData() {
         result.password = passwordValue;
     }
 
-    let requiredProperties = ['username', 'passwords'];
+    let requiredProperties = ['username', 'password'];
     let isValid = requiredProperties.every(i => i in result);
 
     if(isValid) {

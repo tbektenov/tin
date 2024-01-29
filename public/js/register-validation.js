@@ -13,6 +13,8 @@ form.addEventListener('submit', async (e) => {
      * So, basically this sends result object further after completing all the client-side validation
      * And then server-side validation is performed:
      * it checks whether such username exists or not - and returns the corresponding answer
+     * Has some elements of SPA.
+     * 
      */
     if (validatedData) {
         try {

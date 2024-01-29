@@ -1,6 +1,11 @@
 const form = document.getElementById('index-form');
 const authorName = document.getElementById('authorInput'); // Updated to 'authorInput'
 
+/**
+ * This code is verifying input from the search bar on the main page.
+ * 
+ */
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 

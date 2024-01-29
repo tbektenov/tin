@@ -8,6 +8,10 @@ const jwt = require('jsonwebtoken');
 
 const userLayout = '../views/layouts/user';
 
+/**
+ * LOGIN
+ * GET: page
+ */
 router.get('/login', async (req, res) => {
     try {
         var details = {
@@ -21,6 +25,10 @@ router.get('/login', async (req, res) => {
     }
 });
 
+/**
+ * LOGIN
+ * POST: user
+ */
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -41,6 +49,10 @@ router.post('/login', async (req, res) => {
     }
 });
 
+/**
+ * REGISTRATION
+ * GET: page
+ */
 router.get('/register', async (req, res) => {
     try {
         var details = {
@@ -54,6 +66,10 @@ router.get('/register', async (req, res) => {
     }
 });
 
+/**
+ * REGISTRATION
+ * POST: user
+ */
 router.post('/register', async(req, res) => {
     try {
         const { username, email, password } = req.body;

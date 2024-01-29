@@ -2,6 +2,14 @@ const form = document.getElementById('indexForm');
 const username = document.getElementById('username');
 const password = document.getElementById('password');
 
+/**
+ * 
+ * This code is for the login page:
+ * It has both client-side and server-side validations.
+ * Has some elements of SPA
+ * 
+ */
+
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -45,6 +53,7 @@ function validateData() {
         result.username = usernameValue;
     }
 
+    //password
     if (passwordValue === '') {
         setErrorFor(password, 'Password cannot be empty');
     } else {
@@ -52,6 +61,7 @@ function validateData() {
         result.password = passwordValue;
     }
 
+    // Check whether all the properties are in result
     let requiredProperties = ['username', 'password'];
     let isValid = requiredProperties.every(i => i in result);
 

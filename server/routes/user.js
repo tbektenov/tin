@@ -5,6 +5,7 @@ const Book = require('../models/book');
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const user = require('../models/user');
 
 const userLayout = '../views/layouts/user';
 
@@ -40,10 +41,22 @@ router.post('/login', async (req, res) => {
         let existingUser = await User.findOne({ username });
 
         if (!existingUser) {
-            return res.status(400).json({ error: 'No such username' });
+            return res.status(400).json({ error: 'Invalid credentials' });
         }
 
-        
+        let isValidPassword = await bcrypt.compare(password, existingUser.password);
+
+        if (!isValidPassword) {
+            return res.status(400).json({ error: 'Invalid p' });
+        }
+
+        let token = jwt.sign({
+            userId: existingUser._id,
+            isAdmin: existingUser.isAdmin,
+        },'AbiyDyadyaZaChtosh');
+
+        res.cookie('token', token, { httpOnly: true });
+
     } catch (error) {
         console.log(error);
     }

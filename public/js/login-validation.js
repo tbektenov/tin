@@ -29,9 +29,16 @@ form.addEventListener('submit', async (e) => {
                 let resData = await res.json();
                 let errorMessage = resData.error;
 
-                if(errorMessage.includes('No such username')) {
+                if(errorMessage.includes('Invalid credentials')) {
                     setErrorFor(username, errorMessage);
                 }
+
+                if(errorMessage.includes('Invalid p')) {
+                    setErrorFor(password, 'Invalid credentials');
+                }
+            } else {
+                form.reset();
+                window.location.href = '/';
             }
         } catch (error) {
             console.error(error);

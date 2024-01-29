@@ -1,15 +1,24 @@
-<h3 style="text-decoration: underline; text-underline-offset: 6px;">Sign in</h3>
+<div class="content">
+    <h3 style="text-decoration: underline; text-underline-offset: 6px;">Sign in</h3>
 
-<form action="/login" method="post" class="index-form">
-    <div>
-        <label for="username"><b>Username:</b></label>
-        <input type="text" placeholder="Enter Username" name="username">
+    <form action="/login" method="post" class="index-form" id="indexForm">
+        <div>
+            <div class="form-control">
+                <label for="username"><b>Username:</b></label>
+                <input type="text" placeholder="Enter Username" name="username" id="username">
+                <small>Error message</small>
+            </div>
 
-        <label for="password"><b>Password:</b></label>
-        <input type="password" placeholder="Enter Password" name="password">
+            <div class="form-control" style="margin-bottom: 8px;">
+                <label for="password"><b>Password:</b></label>
+                <input type="password" placeholder="Enter Password" id="password">
+                <small>Error message</small>
+            </div>
 
-        <button type="submit">Login</button>
-    </div>
-</form>
+            <button type="submit">Login</button>
+        </div>
+    </form>
 
-<a href="/register">I don't have an accout</a>
+    <a href="/register">I don't have an accout</a>
+    <script src="/js/login-validation.js"></script>
+</div>

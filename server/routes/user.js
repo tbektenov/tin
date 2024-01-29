@@ -3,6 +3,8 @@ const router = express.Router();
 const Author = require('../models/author');
 const Book = require('../models/book');
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const userLayout = '../views/layouts/user';
 
@@ -14,6 +16,16 @@ router.get('/login', async (req, res) => {
         }
 
         res.render('user/login', { details, layout: userLayout});
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.post('/login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        
     } catch (error) {
         console.log(error);
     }
@@ -34,9 +46,9 @@ router.get('/register', async (req, res) => {
 
 router.post('/register', async(req, res) => {
     try {
-        const { username, email, password, birthdate } = req.body;
+        const { username, email, password } = req.body;
 
-        if (!username || !email || !password || !birthdate) {
+        if (!username || !email || !password) {
             return res.status(400).json({ error: 'All fields are required.' });
         }
 
@@ -45,9 +57,18 @@ router.post('/register', async(req, res) => {
             return res.status(400).json({ error: 'Username already exists.' });
         }
         
-        console.log(req.body);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-        // return res.json({ message: 'Registration successful.' });
+        try {
+            const user = await User.create({ username, email, password: hashedPassword });
+            res.status(201).json({ message: 'User Created', user });
+            res.redirect('/login');
+        } catch (error) {
+            if(error.code === 11000) {
+                res.status(409).json({ message: 'User already in use' });
+            }
+            res.status(500).json({ message: 'Server error' });
+        }
     } catch (error) {
         console.error(error);
     }

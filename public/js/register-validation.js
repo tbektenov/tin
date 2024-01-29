@@ -3,7 +3,6 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
-const birthdate = document.getElementById('birthdate');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -44,10 +43,6 @@ function validateData() {
     let emailValue = email.value.trim();
     let passwordValue = password.value.trim();
     let password2Value = password2.value.trim();
-    let birthdateValue = birthdate.value.trim();
-
-    let currentDate = new Date();
-    let chosenDate = new Date(birthdateValue);
 
     // Object to store validated data
     let result = {};
@@ -70,7 +65,6 @@ function validateData() {
         result.email = emailValue;
     }
 
-    // password
     if (passwordValue === '') {
         setErrorFor(password, 'Password cannot be empty');
     } else {
@@ -88,19 +82,9 @@ function validateData() {
         result.password = password2Value;
     }
 
-    // date of birth
-    if (birthdateValue === '') {
-        setErrorFor(birthdate, 'Birthdate cannot be empty');
-    } else if (currentDate.setHours(0, 0, 0, 0) <= chosenDate.setHours(0, 0, 0, 0)) {
-        setErrorFor(birthdate, 'Chosen date cannot equal or exceed current date');
-    } else {
-        setSuccessFor(birthdate);
-        result.birthdate = birthdateValue;
-    }
-
     // Check if all required properties are present in the result object
-    const requiredProperties = ['username', 'email', 'password', 'birthdate'];
-    const isValid = requiredProperties.every(prop => prop in result);
+    const requiredProperties = ['username', 'email', 'password'];
+    const isValid = requiredProperties.every(i => i in result);
 
     if (isValid) {
         return result;

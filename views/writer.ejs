@@ -1,9 +1,20 @@
 <h1 style="text-decoration: underline; text-underline-offset: 15px;"><%= writer.name %></h1>
-<h3 style="font-weight: normal; font-size: 18px;">Net worth: <%= writer.netWorth %>$</h3>
+<h3 style="font-weight: normal; font-size: 18px; color: rgb(92, 92, 92);">Net worth: <%= writer.netWorth %>$</h3>
 <article class="article">
     <%= writer.bio %>
 </article>
 
-<% writer.books.forEach(book => { %>
-    <%= book.name %>
-<% }) %>
+<h3 style="text-decoration: underline;">Books</h3>
+<% if (writer.books.length) { %>
+    <% writer.books.forEach(book => { %>
+
+        <li style="color: rgb(92, 92, 92);">
+            <span>"<%= book.name %>", number of copies sold: <%= book.numOFCopies %></span>
+        </li>
+    
+    <% }) %>
+<% } else { %>
+
+    <p style="color: rgb(92, 92, 92);">Currently empty</p>
+    
+<% } %>

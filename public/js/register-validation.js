@@ -33,9 +33,6 @@ form.addEventListener('submit', async (e) => {
                 if (errorMessage.includes('Username already exists')) {
                     setErrorFor(username, errorMessage);
                 }
-            } else {
-                form.reset();
-                window.location.href = '/login';
             }
         } catch (error) {
             console.error('Error sending registration data:', error);

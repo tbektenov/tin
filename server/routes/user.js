@@ -56,6 +56,7 @@ router.post('/login', async (req, res) => {
         },'AbiyDyadyaZaChtosh');
 
         res.cookie('token', token, { httpOnly: true });
+        res.redirect('/');
 
     } catch (error) {
         console.log(error);
@@ -91,7 +92,7 @@ router.post('/register', async(req, res) => {
             return res.status(400).json({ error: 'All fields are required.' });
         }
 
-        const existingUser = await User.findOne({ username });
+        const existingUser = await User.findOne({ username: username });
         if (existingUser) {
             return res.status(400).json({ error: 'Username already exists.' });
         }
@@ -100,14 +101,15 @@ router.post('/register', async(req, res) => {
 
         try {
             const user = await User.create({ username, email, password: hashedPassword });
-            res.status(201).json({ message: 'User Created', user });
             res.redirect('/login');
         } catch (error) {
-            if(error.code === 11000) {
-                res.status(409).json({ message: 'User already in use' });
+            if (error.code === 11000) {
+                res.status(409).json({ error: 'User already in use' });
             }
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ error: 'Server error' });
+            
         }
+        
     } catch (error) {
         console.error(error);
     }

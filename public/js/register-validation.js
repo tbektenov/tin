@@ -34,7 +34,6 @@ form.addEventListener('submit', async (e) => {
                     setErrorFor(username, errorMessage);
                 }
             } else {
-                form.reset();
                 window.location.href = '/login';
             }
         } catch (error) {

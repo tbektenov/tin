@@ -6,7 +6,7 @@ const { i18next, middleware } = require('./public/js/i18n');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
-const session = require('express-session');
+const session = require('express-session'); 
 
 const connectDB = require('./server/config/db');
 

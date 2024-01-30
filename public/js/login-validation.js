@@ -37,7 +37,6 @@ form.addEventListener('submit', async (e) => {
                     setErrorFor(password, 'Invalid credentials');
                 }
             } else {
-                form.reset();
                 window.location.href = '/';
             }
         } catch (error) {

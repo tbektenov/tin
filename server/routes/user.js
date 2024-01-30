@@ -6,6 +6,7 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const user = require('../models/user');
+const { authMiddleWare } = require('../../public/js/middlewares');
 
 const userLayout = '../views/layouts/user';
 

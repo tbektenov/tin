@@ -237,4 +237,13 @@ router.put('/edit-writer/:id',authMiddleWare , async (req, res) => {
     }
 }); 
 
+router.delete('/delete-writer/:id', authMiddleWare, async (req, res) => {
+    try {
+        await Author.deleteOne({ _id: req.params.id });
+        res.redirect('/admin');
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 module.exports = router;

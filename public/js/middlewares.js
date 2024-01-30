@@ -3,8 +3,13 @@ const jwt = require('jsonwebtoken');
 const authMiddleWare = (req, res, next) => {
     let token = req.cookies.token;
 
+    var details = {
+        title: "Unauthorized",
+        description: "Unauthorized page."
+    }
+
     if(!token) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.render('user/unauthorizedPage', { details });
     }
     
     try {
@@ -13,7 +18,7 @@ const authMiddleWare = (req, res, next) => {
         req.isAdmin = decodedToken.isAdmin;
         next(); 
     } catch (error) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.render('user/unauthorizedPage', { details });
     }
 };
 

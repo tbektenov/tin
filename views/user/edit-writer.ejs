@@ -1,0 +1,17 @@
+<a href="/admin">&larr; Back</a>
+<div class="admin-title">
+    <h2>Edit Writer's info</h2>
+</div>
+
+<form action="/edit-writer/<%= writer._id %>?_method=PUT" method="post">
+    <label for="wname">Name:</label>
+    <input type="text" placeholder="Writer's name" name="wname" value="<%= writer.name %>">
+
+    <label for="wbio">Bio:</label>
+    <textarea name="wbio" cols="50" rows="10"><%= writer.bio %></textarea>
+
+    <label for="netWorth">Net Worth:</label>
+    <input type="number" placeholder="Writer's net worth" name="netWorth" value="<%= writer.netWorth %>">
+
+    <input type="submit" value="Update" class="btn">
+</form>

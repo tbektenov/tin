@@ -1,0 +1,17 @@
+<a href="/admin">&larr; Back</a>
+<div class="admin-title">
+    <h2>Add New Writer</h2>
+</div>
+
+<form action="/add-writer" method="post">
+    <label for="wname">Name:</label>
+    <input type="text" placeholder="Writer's name" name="wname">
+
+    <label for="wbio">Bio:</label>
+    <textarea name="wbio" cols="50" rows="10"></textarea>
+
+    <label for="netWorth">Net Worth:</label>
+    <input type="number" placeholder="Writer's net worth" name="netWorth">
+
+    <input type="submit" value="Add" class="btn">
+</form>

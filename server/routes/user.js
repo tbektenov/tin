@@ -114,6 +114,127 @@ router.post('/register', async(req, res) => {
     } catch (error) {
         console.error(error);
     }
-})
+});
+
+router.get('/admin',authMiddleWare , async (req, res) => {
+    try {
+        var details = {
+            title: "Admin Page",
+            description: "Admin's page"
+        }
+
+        let writers = await Author.find().sort({ name: 1 });
+
+        if (req.isAdmin) {
+            res.render('user/admin', { details, layout: userLayout, writers });
+        } else {
+            res.send('Not an admin');    
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}); 
+
+router.get('/add-writer',authMiddleWare , async (req, res) => {
+    try {
+        var details = {
+            title: "Add writer",
+            description: "Admin's page"
+        }
+
+        if (req.isAdmin) {
+            res.render('user/add-writer',
+            {
+                details
+            });
+        } else {
+            res.send('Not an admin');    
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}); 
+
+router.post('/add-writer',authMiddleWare , async (req, res) => {
+    try {
+        var details = {
+            title: "Add writer",
+            description: "Admin's page"
+        }
+
+        if (req.isAdmin) {
+            try {
+                let newAuthor = new Author({
+                    name: req.body.wname,
+                    bio: req.body.wbio,
+                    netWorth: req.body.netWorth
+                });
+
+                await Author.create(newAuthor);
+                res.redirect('/admin');
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            res.send('Not an admin');    
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}); 
+
+router.get('/edit-writer/:id',authMiddleWare , async (req, res) => {
+    try {
+        var details = {
+            title: "Edit writer",
+            description: "Admin's page"
+        }
+
+        if (req.isAdmin) {
+            let writer = await Author.findOne({ _id: req.params.id });
+            res.render('user/edit-writer',
+            {
+                details,
+                writer
+            });
+        } else {
+            res.send('Not an admin');    
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}); 
+
+router.put('/edit-writer/:id',authMiddleWare , async (req, res) => {
+    try {
+        var details = {
+            title: "Edit writer",
+            description: "Admin's page"
+        }
+
+        if (req.isAdmin) {
+            try {
+                await Author.findByIdAndUpdate(req.params.id, {
+                    name: req.body.wname,
+                    bio: req.body.wbio,
+                    netWorth: req.body.netWorth
+                });
+
+                res.redirect('/admin');
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            res.send('Not an admin');    
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}); 
 
 module.exports = router;

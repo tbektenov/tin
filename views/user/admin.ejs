@@ -1,0 +1,22 @@
+<div class="content">
+    <h2>Writers</h2>
+    <a href="/add-writer" class="button"> + Add Writer</a>
+</div>
+<ul class="admin-writers">
+    <% writers.forEach(writer => { %>
+     
+        <li>
+            <a href="/writers/<%= writer._id %>">
+                <%= writer.name %> &nearr;
+            </a>
+            <div class="controls">
+                <a href="/edit-writer/<%= writer._id %>" class="btn">Edit</a>
+
+                <form action="/delete-writer/<%= writer._id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete" class="btn">
+                </form>
+            </div>
+        </li>
+
+    <% }) %>
+</ul>

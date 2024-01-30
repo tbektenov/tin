@@ -246,4 +246,9 @@ router.delete('/delete-writer/:id', authMiddleWare, async (req, res) => {
     }
 });
 
+router.get('/logout', async(req, res) => {
+    res.clearCookie('token');
+    res.redirect('/');
+});
+
 module.exports = router;

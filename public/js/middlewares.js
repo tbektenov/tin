@@ -9,7 +9,7 @@ const authMiddleWare = (req, res, next) => {
     }
 
     if(!token) {
-        return res.render('user/unauthorizedPage', { details });
+        return res.redirect('/login');
     }
     
     try {

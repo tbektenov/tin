@@ -101,7 +101,7 @@ router.post('/register', async(req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         try {
-            const user = await User.create({ username, email, password: hashedPassword });
+            await User.create({ username, email, password: hashedPassword });
             res.redirect('/login');
         } catch (error) {
             if (error.code === 11000) {

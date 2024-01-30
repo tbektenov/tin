@@ -42,10 +42,19 @@ router.get('/writers', async (req, res) => {
         title: "Writers",
         description: "Writers list."
     }
-
     try {
-        const writers = await Author.find().sort({ name: 1 });
-        res.render('writers', { details, writers });
+        let perPage = 5;
+        let page = req.query.page || 1;
+
+        let writers = await Author.aggregate([ { $sort: { name: 1 } } ])
+                                .skip(perPage * page - perPage)
+                                .limit(perPage)
+                                .exec();
+
+        const count = await Author.countDocuments();
+        const nextPage = parseInt(page) + 1;
+        const hasNextPage = nextPage <= Math.ceil(count / perPage);
+        res.render('writers', { details, writers, current: page, nextPage: hasNextPage ? nextPage : null });
     } catch (error) {
         console.log(error);
     }

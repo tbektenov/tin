@@ -11,7 +11,7 @@ This project is a Wikipedia-like website focused on authors and their literary w
 
 **Setup Instructions:**
 
-Database Initialization: The first time you run the project, navigate to server/routes/main.js and execute the populate function to initialize your database.
+**Database Initialization:** The first time you run the project, navigate to server/routes/main.js and execute the populate function to initialize your database.
 Environment Configuration: In the root folder, create a .env file and add the following line, replacing (connection string) with your actual MongoDB connection string:
 
 MONGODB_URI=(connection string)

@@ -6,7 +6,7 @@ This project is a Wikipedia-like website focused on authors and their literary w
 
 - - [x] Extensive Database: Users can explore a comprehensive database of authors and their written works.
 - - [x] Search Functionality: Easily search for specific authors or literature.
-- - [] Favorites: Logged-in users can add authors to their list of favorites for quick access.
+- - [ ] Favorites: Logged-in users can add authors to their list of favorites for quick access.
 - - [x] Admin Capabilities: Admin users have the ability to create, update, and delete author entries.
 
 **Setup Instructions:**

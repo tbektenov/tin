@@ -1,10 +1,15 @@
-So, this project is Wikipedia-like.
+Project Overview:
 
-**What's the idea:**
+This project is a Wikipedia-like website focused on authors and their literary works.
 
-It is a website with a database of different authors and literature they have written. You can search, and if you are logged in you can add them to your favorites. You can delete, update, and create writers if you are an admin.
+Key Features:
 
-PS
+Extensive Database: Users can explore a comprehensive database of authors and their written works.
+Search Functionality: Easily search for specific authors or literature.
+Favorites: Logged-in users can add authors to their list of favorites for quick access.
+Admin Capabilities: Admin users have the ability to create, update, and delete author entries.
+Setup Instructions:
 
-When running for the first time in server/routes/main.js there is a function populate - you can run it, to populate your database.
-And create in root folder .env file and add "MONGODB_URI=(connection string)" to use it  
+Database Initialization: The first time you run the project, navigate to server/routes/main.js and execute the populate function to initialize your database.
+Environment Configuration: In the root folder, create a .env file and add the following line, replacing (connection string) with your actual MongoDB connection string:
+MONGODB_URI=(connection string)

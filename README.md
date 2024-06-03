@@ -1,4 +1,4 @@
-Project Overview:
+### Project Overview:
 
 This project is a Wikipedia-like website focused on authors and their literary works.
 
